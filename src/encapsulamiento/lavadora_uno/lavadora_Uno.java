@@ -18,13 +18,13 @@ public class lavadora_Uno {
                 "(1. Ropa de color, 2. Ropa blanca, 3. Ropa JEANS  fuerte):");
         int tiposdeRopa = Integer.parseInt(tipoDeRopa);
 
-        String cantidadRopa = JOptionPane.showInputDialog("Ingresa la cantidad de prendas para lavar:");
+        String cantidadRopa = JOptionPane.showInputDialog("Ingresa la cantidad de prendas para lavar: maximo 18 prendas");
         int cantidaDeRopa = Integer.parseInt(cantidadRopa);
         System.out.println("Cantidad de ropa: " + cantidaDeRopa);
         Funciones funciones = new Funciones(cantidaDeRopa, tiposdeRopa);
 
         // Opciones para el usuario
-        String[] opciones = {"Iniciar lavado", "Cancelar"};
+        String[] opciones = {"Cancelar","Iniciar lavado" };
         int seleccion = JOptionPane.showOptionDialog(null,//JOptionPane.showOptionDialog(null, SIRVE PARA DAR OPCIONES AL USUARIO
                 "Elige una opción:",
                 "Título del diálogo",
@@ -38,7 +38,7 @@ public class lavadora_Uno {
         if (seleccion == 0) {
             funciones.CicloFinalizado();
         } else if (seleccion == 1) {
-            funciones.CicloFinalizado();
+            funciones.cancelarLavadod();
         } else {
             JOptionPane.showMessageDialog(null, "Operación cancelada.");
         }
@@ -47,7 +47,7 @@ public class lavadora_Uno {
 
 
         //SOLO SE PUEDE VER EL METODO CICLOFINALIZADO EN EL ARCHIVO FUNCIONES.JAVA ES EL UNICO PUBLICO Y SE PUEDE VER EN OTRA CLASE
-        funciones.CicloFinalizado();
+
     }
 
 }

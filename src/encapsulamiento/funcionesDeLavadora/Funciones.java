@@ -37,15 +37,15 @@ public class Funciones {
         Llenado();
         if (llenadoCompleto == 1) {
             if (tipoRopa == 1) {
-                System.out.println("Ropa de color" );
+                System.out.println("Ropa de color");
                 System.out.println("Lavando...");
                 lavadoCompleto = 1;
             } else if (tipoRopa == 2) {
-                System.out.println("Ropa blanca" );
+                System.out.println("Ropa blanca");
                 System.out.println("Lavando...");
                 lavadoCompleto = 1;
             } else if (tipoRopa == 3) {
-                System.out.println("Ropa de color" );
+                System.out.println("Ropa de color");
                 System.out.println("Lavando...");
                 lavadoCompleto = 1;
             } else {
@@ -73,6 +73,11 @@ public class Funciones {
             System.out.println("Vuelva pronto");
             System.out.println("-----------------------------------------------");
         }
+
+    }
+
+    public void cancelarLavadod(){
+        System.out.println("Lavado cancelado");
     }
 
 }

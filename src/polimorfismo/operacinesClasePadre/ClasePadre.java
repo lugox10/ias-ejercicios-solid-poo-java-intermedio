@@ -18,7 +18,9 @@ public abstract class ClasePadre {
 
     public abstract void Operaciones();
 
-    public void Resultado(){
+    public void Resultado()
+
+    {
         System.out.println("El Resultado es: "+ resultado);
     }
 }
