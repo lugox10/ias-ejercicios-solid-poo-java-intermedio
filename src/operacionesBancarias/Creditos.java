@@ -13,6 +13,7 @@ public class Creditos extends CuentasRepresentante implements Procesos{
     public void procesos() {
      if(origen == destino){
          System.out.println("el pago de su credito es exitiso");
+         System.out.println("-------------------------------------");
      }
 
     }

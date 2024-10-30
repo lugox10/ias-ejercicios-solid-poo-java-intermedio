@@ -14,6 +14,7 @@ public class Consignacion extends CuentasRepresentante implements Procesos {
     public void procesos() {
         if(origen == cliente){
             System.out.println("su consignacion fue exitosa");
+            System.out.println("-------------------------------------");
         }
 
     }
