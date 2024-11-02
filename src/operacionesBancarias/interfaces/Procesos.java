@@ -7,4 +7,6 @@ import java.util.LinkedList;
 public interface Procesos {
 
     LinkedList<Cuentas> listarMovimientos();
+
+
 }

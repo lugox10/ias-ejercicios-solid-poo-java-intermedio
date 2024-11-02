@@ -20,4 +20,6 @@ public class Consignacion implements Procesos {
     public void procesarConsginacion(CuentaNomina cuentaNomina){
         System.out.println("Se esta realizando una consignación");
     }
+
+
 }
