@@ -1,4 +1,6 @@
-package operacionesBancarias.operaciones;
+package operacionesBancarias.ClaseAbtracta;
+
+import operacionesBancarias.ClaseAbtracta.OperacionesBancarias;
 
 public class Retiro extends OperacionesBancarias {
     public void realizarRetiro(int cantidad) {

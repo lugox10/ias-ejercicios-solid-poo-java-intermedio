@@ -1,4 +1,4 @@
-package operacionesBancarias.operaciones;
+package operacionesBancarias.ClaseAbtracta;
 
 public abstract class OperacionesBancarias {
     int saldo;

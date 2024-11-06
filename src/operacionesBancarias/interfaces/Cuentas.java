@@ -1,9 +1,6 @@
 package operacionesBancarias.interfaces;
 
-import operacionesBancarias.cuentas.CuentasRepresentante;
-
 public interface Cuentas {
-
-    String consultarSaldo();
+    double consultarSaldo();
     String getNumeroCuenta();
 }

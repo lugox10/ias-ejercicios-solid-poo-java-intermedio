@@ -1,4 +1,6 @@
-package operacionesBancarias.operaciones;
+package operacionesBancarias.ClaseAbtracta;
+
+import operacionesBancarias.ClaseAbtracta.OperacionesBancarias;
 
 public class Deposito extends OperacionesBancarias {
 

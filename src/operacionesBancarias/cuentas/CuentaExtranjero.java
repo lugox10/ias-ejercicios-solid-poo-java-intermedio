@@ -4,8 +4,8 @@ import operacionesBancarias.interfaces.Cuentas;
 
 public class CuentaExtranjero implements Cuentas {
     @Override
-    public String consultarSaldo() {
-        return null;
+    public double consultarSaldo() {
+        return 0;
     }
 
     @Override

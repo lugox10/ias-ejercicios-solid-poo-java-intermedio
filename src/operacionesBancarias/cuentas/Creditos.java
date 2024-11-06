@@ -1,19 +1,27 @@
 package operacionesBancarias.cuentas;
 
-import operacionesBancarias.cuentas.CuentasRepresentante;
 import operacionesBancarias.interfaces.Cuentas;
 
 public class Creditos implements Cuentas {
-    String origen;
-    String destino;
+    double saldo;
+    String numeroCredito;
+
+    public Creditos(String numeroCredito){
+        this.numeroCredito=numeroCredito;
+    }
 
     @Override
-    public String consultarSaldo() {
-        return "El Saldo de su Credito es $000000";
+    public double consultarSaldo() {
+        return saldo;
     }
 
     @Override
     public String getNumeroCuenta() {
-        return "111111111111111111111";
+        return this.numeroCredito;
     }
+
+    public void setSaldo(double saldo){
+        this.saldo=saldo;
+    }
+
 }

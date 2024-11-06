@@ -2,22 +2,22 @@ package operacionesBancarias.cuentas;
 
 import operacionesBancarias.interfaces.Cuentas;
 
-public class CuentasRepresentante implements Cuentas {
+public class CuentasCorriente implements Cuentas {
 
     String cliente;
     double saldo;
     int numeroCuenta;
 
-    public CuentasRepresentante(String cliente, double saldo, int numeroCuenta) {
+    public CuentasCorriente(String cliente, double saldo, int numeroCuenta) {
         this.cliente = cliente;
         this.saldo = saldo;
         this.numeroCuenta = numeroCuenta;
     }
 
-    public CuentasRepresentante() {
+    public CuentasCorriente() {
     }
-    public String consultarSaldo(){
-        return "En saldo de tu cuenta Representaten es $5,000,000";
+    public double consultarSaldo(){
+        return 0;
     }
     //public abstract void consultas();
 
