@@ -16,7 +16,6 @@ public class AbonarCartera implements ProcesosCreditos {
 
     @Override
     public LinkedList<Cuentas> listarMovimientos() {
-
         return this.movimientos;
     }
 }
