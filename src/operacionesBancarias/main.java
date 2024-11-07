@@ -1,13 +1,12 @@
 package operacionesBancarias;
 
 import operacionesBancarias.cuentas.CuentaNomina;
-import operacionesBancarias.interfaces.Cuentas;
 import operacionesBancarias.interfaces.Procesos;
 import operacionesBancarias.operaciones.Transferencias;
 
 import java.util.Scanner;
 
-import static operacionesBancarias.interfaces.ConOrigen.cuentaOrigen;
+
 import static operacionesBancarias.interfaces.Procesos.cuentaDestino;
 import static operacionesBancarias.operaciones.AbonarCartera.abonoCartera;
 import static operacionesBancarias.operaciones.Consignacion.consignacion;
@@ -20,11 +19,11 @@ public class main {
         CuentaNomina cuentaConsignacion = new CuentaNomina("", 0);
         Procesos proceso = null;
 
-        int tipo = -1;  // Iniciamos tipo en -1 para mostrar el menú de opciones
+        int tipo = -1;
 
         do {
             mostrarMenu();
-            tipo = scanner.nextInt();  // Leemos la opción seleccionada por el usuario
+            tipo = scanner.nextInt();
 
             switch (tipo) {
                 case 1:
@@ -33,12 +32,12 @@ public class main {
                     break;
 
                 case 2:
-                   //consignar
-                    proceso = consignacion(scanner, cuentaConsignacion);
+
+                    proceso = consignacion(scanner, cuentaConsignacion);  //consignar
                     break;
 
                 case 3:
-                    proceso =Transferencias.tranferencias((CuentaNomina)cuentaDestino);
+                    proceso =Transferencias.tranferencias((CuentaNomina)cuentaDestino);//transferir
 
                     break;
 
@@ -68,17 +67,17 @@ public class main {
                     break;
 
                 default:
-                    // Opción no válida
+
                     System.out.println("Opción no válida, por favor elija una opción del 1 al 7.");
                     break;
             }
 
-            // Si se ha seleccionado una opción válida, procesamos la operación
+
             if (proceso != null && tipo != 0) {
                 proceso.procesar();
             }
 
-        } while (tipo != 0); // El bucle continúa hasta que se seleccione la opción de salir (0)
+        } while (tipo != 0);
     }
 
     // Método para mostrar el menú de opciones

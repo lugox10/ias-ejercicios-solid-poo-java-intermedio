@@ -33,7 +33,7 @@ public class Consignacion implements Procesos {
         return this.cuentaDestino;
     }
 
-    // Método estático refactorizado
+
     public static Procesos consignacion(Scanner scanner, Cuentas cuentaOrigen) {
 
         System.out.println("¿Cuál es el # de la cuenta destino?");
@@ -42,18 +42,12 @@ public class Consignacion implements Procesos {
         System.out.println("¿Cuánto desea consignar?");
         while (!scanner.hasNextDouble()) {
             System.out.println("Por favor, ingresa una cantidad válida.");
-            scanner.next(); // Limpiar el buffer
+            scanner.next();
         }
         double monto = scanner.nextDouble();
-
-        // Crear la cuenta de destino con el monto ingresado
         CuentaNomina cuentaDestino = new CuentaNomina(numeroCuenta, monto);
-
-        // Crear y configurar la operación de consignación
         Consignacion consignacion = new Consignacion();
         consignacion.setCuenta(cuentaDestino);
-
-        // Devolver el objeto de operación para su procesamiento posterior
         return consignacion;
     }
 }
