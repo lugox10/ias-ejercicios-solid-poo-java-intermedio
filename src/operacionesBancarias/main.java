@@ -1,72 +1,88 @@
 package operacionesBancarias;
 
-import operacionesBancarias.cuentas.Creditos;
 import operacionesBancarias.cuentas.CuentaNomina;
-import operacionesBancarias.cuentas.CuentasCorriente;
 import operacionesBancarias.interfaces.Cuentas;
 import operacionesBancarias.interfaces.Procesos;
-import operacionesBancarias.operaciones.*;
+import operacionesBancarias.operaciones.Transferencias;
 
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Scanner;
+
+import static operacionesBancarias.interfaces.ConOrigen.cuentaOrigen;
+import static operacionesBancarias.interfaces.Procesos.cuentaDestino;
+import static operacionesBancarias.operaciones.AbonarCartera.abonoCartera;
+import static operacionesBancarias.operaciones.Consignacion.consignacion;
+import static operacionesBancarias.operaciones.PagoNomina.pagarNomina;
 
 public class main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Elige una opción: ");
-        System.out.println("1- Abono a Cartera");
-        System.out.println("2 - Consignación");
-        System.out.println("3 - Transferencia");
-        System.out.println("4 - Pago de Nómina");
-        System.out.println("5 - Débito Automático");
-        System.out.println("6 - Depósito");
-        System.out.println("7 - Retiro");
-        int tipo = scanner.nextInt();
-        Cuentas cuentaConsignacion = new CuentaNomina("",0);
-        Cuentas cuentaDestino = new CuentaNomina("",0);
-        Cuentas cuenta = null;
+        CuentaNomina cuentaConsignacion = new CuentaNomina("", 0);
         Procesos proceso = null;
-        do{
 
+        int tipo = -1;  // Iniciamos tipo en -1 para mostrar el menú de opciones
 
-            if(tipo==-1){
-                mostarMenu();
-                tipo = scanner.nextInt();
+        do {
+            mostrarMenu();
+            tipo = scanner.nextInt();  // Leemos la opción seleccionada por el usuario
+
+            switch (tipo) {
+                case 1:
+
+                    proceso = abonoCartera(cuentaConsignacion);
+                    break;
+
+                case 2:
+                   //consignar
+                    proceso = consignacion(scanner, cuentaConsignacion);
+                    break;
+
+                case 3:
+                    proceso =Transferencias.tranferencias((CuentaNomina)cuentaDestino);
+
+                    break;
+
+                case 4:
+
+                    proceso = pagarNomina();
+                    break;
+
+                case 5:
+
+                    System.out.println("Débito Automático: Función aún no implementada.");
+                    break;
+
+                case 6:
+
+                    System.out.println("Depósito: Función aún no implementada.");
+                    break;
+
+                case 7:
+
+                    System.out.println("Retiro: Función aún no implementada.");
+                    break;
+
+                case 0:
+
+                    System.out.println("Saliendo del programa...");
+                    break;
+
+                default:
+                    // Opción no válida
+                    System.out.println("Opción no válida, por favor elija una opción del 1 al 7.");
+                    break;
             }
-            if (tipo == 1) {
-                proceso=abonoCartera((CuentaNomina) cuentaConsignacion);
-                /*AbonarCartera abonarCartera= (AbonarCartera)proceso;
-                cuentaConsignacion= abonarCartera.getCuentaOrigen();
-                cuentaDestino = abonarCartera.getCuenta();
-                System.out.println("$$$$$$$$El saldo de su cuenta de nomina número "+cuentaConsignacion.getNumeroCuenta()+" es :"+cuentaConsignacion.consultarSaldo()+"$$$$$$$$$$$$$$$$$");*/
-                tipo=-1;
-            }
-            if (tipo == 2) {
-                System.out.println("Cual es en # de la cuenta?");
-                String numeroCuenta = scanner.next();
-                System.out.println("Cuando vas a cosignar?");
-                double valor = scanner.nextInt();
-                CuentaNomina cuentaNomina = new CuentaNomina(numeroCuenta,cuentaConsignacion.consultarSaldo()+valor);
-                proceso = consignacion(cuentaNomina);
-                cuentaConsignacion=proceso.getCuenta();
-                tipo=-1;
+
+            // Si se ha seleccionado una opción válida, procesamos la operación
+            if (proceso != null && tipo != 0) {
+                proceso.procesar();
             }
 
-            if (tipo == 4) {
-                proceso=pagarNomina();
-                tipo=-1;
-            }
-
-            proceso.procesar();
-
-        } while (tipo!=0);
-
+        } while (tipo != 0); // El bucle continúa hasta que se seleccione la opción de salir (0)
     }
 
-
-    private static void mostarMenu(){
+    // Método para mostrar el menú de opciones
+    private static void mostrarMenu() {
         System.out.println("Elige una opción: ");
         System.out.println("1- Abono a Cartera");
         System.out.println("2 - Consignación");
@@ -75,40 +91,6 @@ public class main {
         System.out.println("5 - Débito Automático");
         System.out.println("6 - Depósito");
         System.out.println("7 - Retiro");
+        System.out.println("0 - Salir");
     }
-//
-    private static Procesos abonoCartera(CuentaNomina cuentaOrigen){
-        AbonarCartera abonarCartera = new AbonarCartera();
-        if(cuentaOrigen!=null){
-            abonarCartera.setCuentaOrigen(cuentaOrigen);
-            System.out.println("Cual es el credito?");
-            Scanner scanner2 = new Scanner(System.in);
-            Creditos creditos=new Creditos(scanner2.next());
-
-            System.out.println("Cuanto quiere abonar?");
-            double auxSaldo=scanner2.nextInt();
-            creditos.setSaldo(auxSaldo);
-            cuentaOrigen.setSaldo(cuentaOrigen.consultarSaldo()-auxSaldo);
-            abonarCartera.setCuenta(creditos);
-        }else{
-            System.out.println("###################Debes primero hacer una consignación#######################");
-        }
-    return abonarCartera;
-    }
-
-    private static Procesos consignacion(CuentaNomina cuentaDestino){
-        Consignacion consignacion = new Consignacion();
-        consignacion.setCuenta(cuentaDestino);
-        return consignacion;
-    }
-
-    private static Procesos pagarNomina(){
-        PagoNomina pagoNomina = new PagoNomina();
-        CuentasCorriente cuentasCorriente = new CuentasCorriente();
-        CuentaNomina cuentaNomina = new CuentaNomina("999999",0);
-        pagoNomina.setCuentaOrigen(cuentasCorriente);
-        pagoNomina.setCuenta(cuentaNomina);
-        return pagoNomina;
-    }
-
 }

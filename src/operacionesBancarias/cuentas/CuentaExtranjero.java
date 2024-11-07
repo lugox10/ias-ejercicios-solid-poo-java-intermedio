@@ -10,6 +10,6 @@ public class CuentaExtranjero implements Cuentas {
 
     @Override
     public String getNumeroCuenta() {
-        return "77777777777777777777";
+        return getNumeroCuenta();
     }
 }

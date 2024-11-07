@@ -1,5 +1,7 @@
 package operacionesBancarias.operaciones;
 
+import operacionesBancarias.cuentas.CuentaNomina;
+import operacionesBancarias.cuentas.CuentasCorriente;
 import operacionesBancarias.interfaces.ConOrigen;
 import operacionesBancarias.interfaces.Cuentas;
 import operacionesBancarias.interfaces.Procesos;
@@ -42,5 +44,14 @@ public class PagoNomina implements Procesos, ConOrigen {
     @Override
     public void setCuentaOrigen(Cuentas cuentaOrigen) {
         this.cuentaOrigen=cuentaOrigen;
+    }
+
+    public static Procesos pagarNomina(){
+        PagoNomina pagoNomina = new PagoNomina();
+        CuentasCorriente cuentasCorriente = new CuentasCorriente();
+        CuentaNomina cuentaNomina = new CuentaNomina("999999",0);
+        pagoNomina.setCuentaOrigen(cuentasCorriente);
+        pagoNomina.setCuenta(cuentaNomina);
+        return pagoNomina;
     }
 }

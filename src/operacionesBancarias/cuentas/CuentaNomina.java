@@ -19,7 +19,7 @@ public class CuentaNomina implements Cuentas {
     }
 
     @Override
-    public String getNumeroCuenta() {
+       public String getNumeroCuenta() {
         return this.numeroCuenta;
     }
 
